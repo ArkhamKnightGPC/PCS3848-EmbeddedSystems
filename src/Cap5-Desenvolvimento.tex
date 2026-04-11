@@ -1,10 +1,12 @@
-\chapter{Project Development} \label{cap:desenvolvimento}
+\chapter{Project Architecture} \label{cap:desenvolvimento}
 
-\section{Tools used}
-Durante o desenvolvimento do trabalho, são utilizadas tecnologias e ferramentas adequadas. Essa seção deve apresentar as tecnologias e ferramentas mais relevantes, utilizadas no desenvolvimento.
+In this chapter, we translate the listed requirements into a selection of specific components to constitute the final system. The primary platform for implementing the artificial intelligence models will be a Raspberry Pi 3B+. The device features 1GB of RAM, which is expected to be sufficient for executing lightweight AI models following preliminary image processing. For prototyping purposes, an OV7670 camera with 300KP resolution (currently owned by a member of the group) may be used; however, if available in the laboratory the final product is intended to utilize a camera with a minimum resolution of 2MP.
 
-\section{Project Implementation}
-Descrever os resultados do projeto e da implementação do trabalho, com justificativas das decisões tomadas.
+To generate the audible alert, a standard 5V active buzzer will be employed, as it is capable of emitting approximately 85dB at a distance of 10cm, ensuring effectiveness given the system's proximity to the driver. Regarding the visual alert signal, 5mm LEDs are considered for the prototyping phase, with the potential transition to a high-intensity light source for the final version to meet the required luminance specifications.
 
-\section{Tests and Evaluations}
-Descrever o procedimento da avaliação do trabalho (teste de hardware, teste de software, teste de módulo, teste de integração, teste de validação), de acordo com o tipo do sistema, com o apoio do orientador, se necessário.
+\begin{figure}[h!]
+    \centering
+    \caption{Block diagram with the AIware system architecture}
+    \includegraphics[width=.9\textwidth]{images/architecture.png}
+    \label{fig:arch}
+\end{figure}

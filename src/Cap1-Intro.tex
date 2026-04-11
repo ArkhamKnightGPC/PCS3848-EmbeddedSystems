@@ -11,6 +11,8 @@
 %% CONTEXT
 \section{Context}
 
+This monograph documents a project proposal submitted for the course PCS3848: Embedded Systems at the Escola Politécnica da Universidade de São Paulo (EPUSP). It contains the specification for an embedded AI system for real-time driver state monitoring and alerting, to be implemented in the Embedded Systems Laboratory course.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivation}
 
@@ -20,6 +22,17 @@
 %    \item Contexto em que o trabalho será desenvolvido.
 %\end{itemize}
 
+According to the World Health Organization \cite{who2023}, approximately 1.19 million people die in road traffic accidents every year with the number of injuries reaching 50 million people per year. The main factors increasing the risk of injury in road traffic accidents include: speeding, driving under the influence of alcohol or drugs, non-use of seat-belts and child restraints and distracted driving.
+
+\begin{figure}[h!]
+    \centering
+    \caption{Number of deaths in traffic accidents worldwide \cite{ritchie2024}}
+    \includegraphics[width=.7\textwidth]{images/road-deaths.png}
+    \label{fig:road_deaths}
+\end{figure}
+
+During our project discussions, we observed that these factors could be detected by a smart computer vision system installed in the car's dashboard with a sufficiently powerful artificial intelligence model. After consulting related works in the literature \cite{li2024} \cite{ben2025} \cite{lumina2026} \cite{essa2026}, we were convinced that such a project is viable with relatively modest hardware constraints and decided to propose it as our project for the course.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Objectives}
 
@@ -28,7 +41,13 @@
 %    \item O que é o trabalho?
 %\end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+We propose a real-time driver state monitoring system for cars and trucks.
+
+The primary objective of this system is to help drivers, specially when they are alone in the vehicle for prolonged periods, by alerting and preventing them from driving in case they are speeding, under the effect of alcohol or other drugs, not wearing their seat-belt, distracted or sleepy.
+
+All these traffic infractions are factors that contribute to potentially serious accidents, especially for truck drivers. The idea is to use simple computer vision models trained with specialized platforms such as TensorFlow Lite to capture images of the driver and, in the event an undesired state is detected, emit an audible alert and provide appropriate recommendations to assist the driver and engage their attention.
+
+Observe that the key metrics to be minimized here are \textbf{latency per model inference} and \textbf{accuracy} so the drive can react sufficiently fast in the vast majority of risky scenarios. Unlike some embedded systems applications, power consumption is not critical here because the system can be powered via USB using the car's battery during its operation.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Related works}
@@ -39,6 +58,23 @@
 %    \item Por que o trabalho é importante?
 %\end{itemize}
 
+The development of driver monitoring systems is an active field of research \cite{review} involving many different types of sensors: cameras, microphones, radar, biometric sensors and even exploiting mechanical on the vehicle. There is a critical trade-off between sensing accuracy and the computational constraints of embedded hardware. While non-visual methods like radar offer privacy benefits, camera-based systems remain the most versatile for capturing nuanced behavioral indicators. For this reason, we choose to focus on the camera-based visual approach.
+
+\begin{figure}[h!]
+    \centering
+    \caption{Different sensing technologies used in driver monitoring systems \cite{review}}
+    \includegraphics[width=.7\textwidth]{images/sensors.png}
+    \label{fig:sensors}
+\end{figure}
+
+The most relevant works consulted are summarized below:
+
+\begin{enumerate}[label=(\alph*)]
+    \item \cite{essa2026} proposes a Vision Transformer (ViT) architecture for detecting driver fatigue specifically targeting deployment on edge AI systems. INT8 and FP16 quantization are used to reduce the memory footprint of the model, and the resulting architecture achieves a high accuracy of 96.8\% on the NTHU-DDD dataset while maintaining a low inference latency of approximately 18ms. It is interesting that the system manages to correctly distinguish natural blinks and dangerous micro-sleep events.
+
+    \item \cite{lumina2026} presents a robust embedded solution centered on the YOLOv11 nano (YOLOv11n) architecture for real-time drowsiness monitoring in drivers. The methodology focuses on high-speed object detection to monitor facial traits in the driver.The quantities monitored include  Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) to identify states of drowsiness or distraction. The system achieves a low latency per inference of approximately 22ms with n overall accuracy of 93.1\%.
+\end{enumerate}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Organisation}
 
@@ -46,4 +82,4 @@
 %Lembre-se de colocar rótulos nos capítulos e seções (com label{} ) e depois utilizar o ref{}
 %Por exemplo, o Capítulo \ref{cap:conceitos} apresenta conceitos....
 
-
+In chapter \ref{cap:conceitos}, we explore key concepts used by the driver monitoring systems discussed. Then, in chapter \ref{cap:especificacao}, we list functional and non-functional requirements for the project. In chapter \ref{cap:desenvolvimento} we provide an architecture for the project detailing what components could be used and how to integrate them into the system.

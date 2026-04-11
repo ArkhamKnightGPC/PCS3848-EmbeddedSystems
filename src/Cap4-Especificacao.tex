@@ -2,3 +2,45 @@
 
 %Definir e descrever os requisitos do sistema.
 
+\section*{Functional Requirements}
+
+\section{Functional Requirements}
+
+\begin{description}
+    \item[FR1] Image capture and processing must occur in real-time.
+    \item[FR2] AI model inferences must be performed locally on the microcontroller/processor.
+    \item[FR3] The entire system must be capable of performing offline inferences.
+    \item[FR4] The camera must capture clear images during both day and night conditions.
+    \item[FR5] The camera must feature infrared (IR) sensitivity.
+    \item[FR6] The camera must be equipped with a microphone.
+    \item[FR7] The system must encapsulate physical image storage devices within a "black box" enclosure.
+    \item[FR8] The system must operate only when the vehicle is in motion.
+    \item[FR9] The system must be equipped with an accelerometer to detect vehicle movement.
+    \item[FR10] The system must alert the driver of inappropriate behavior through audible and visual signals.
+    \item[FR11] The system must transmit the driver's state and history to the central hub whenever an internet connection is available.
+    \item[FR12] The system must detect driver drowsiness.
+    \item[FR13] The system must detect if the driver is using a mobile phone while driving.
+    \item[FR14] The system must detect if the driver is distracted by other activities (e.g., one hand off the steering wheel or general inattention).
+    \item[FR15] The system must detect if the driver is emotionally compromised (e.g., extreme sadness or anger).
+    \item[FR16] The system must detect if the driver is intoxicated.
+    \item[FR17] The system must detect if the vehicle has been involved in an accident.
+    \item[FR18] In the event of an accident, the system must send an alert signal with the vehicle's location to the central hub.
+    \item[FR19] While connected to a network, the system must periodically send a signal to the central hub for user position monitoring.
+    \item[FR20] The system must encrypt all images captured and stored in the black box.
+    \item[FR21] Only the central hub shall have the authority and means to decrypt the images stored in the black box.
+\end{description}
+
+\section*{Non-Functional Requirements}
+
+\begin{description}
+    \item[NFR1] Driver state classification must be completed in less than 100ms.
+    \item[NFR2] The camera resolution must be at least 2 MP.
+    \item[NFR3] The camera must support a minimum frame rate of 30 FPS.
+    \item[NFR4] The black box enclosure must withstand vehicle collisions with forces up to 100 kN.
+    \item[NFR5] The black box storage must have the capacity to store up to 12 hours of video footage.
+    \item[NFR6] The luminous intensity of the visual alert signal must be between 500 and 1000 nits to ensure visibility without compromising the driver's vision sensitivity.
+    \item[NFR7] The sound intensity of the audible alert signal must exceed 70 dB.
+    \item[NFR8] When an internet connection is available, the system must transmit its location and the driver's state to the central hub at intervals of no more than 30 seconds.
+    \item[NFR9] The system must maintain a cumulative availability of 99\%.
+    \item[NFR10] The driver state inference model must achieve an accuracy higher than 95\%.
+\end{description}
