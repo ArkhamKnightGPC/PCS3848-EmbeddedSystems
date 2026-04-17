@@ -70,10 +70,17 @@ The development of driver monitoring systems is an active field of research \cit
 The most relevant works consulted are summarized below:
 
 \begin{enumerate}[label=(\alph*)]
-    \item \cite{essa2026} proposes a Vision Transformer (ViT) architecture for detecting driver fatigue specifically targeting deployment on edge AI systems. INT8 and FP16 quantization are used to reduce the memory footprint of the model, and the resulting architecture achieves a high accuracy of 96.8\% on the NTHU-DDD dataset while maintaining a low inference latency of approximately 18ms. It is interesting that the system manages to correctly distinguish natural blinks and dangerous micro-sleep events.
+    \item \cite{essa2026} benchmarks seven different lightweight deep learning architectures for real-time embedded driver state detection. The benchmark uses Kaggle's State Farm Distracted Driver Detection multimodal classification dataset to evaluate and compare the model architectures. The architectures considered achieve accuracies of over 90\% with very small footprints, sometimes smaller than one megabyte.
 
-    \item \cite{lumina2026} presents a robust embedded solution centered on the YOLOv11 nano (YOLOv11n) architecture for real-time drowsiness monitoring in drivers. The methodology focuses on high-speed object detection to monitor facial traits in the driver.The quantities monitored include  Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) to identify states of drowsiness or distraction. The system achieves a low latency per inference of approximately 22ms with n overall accuracy of 93.1\%.
+    \item \cite{lumina2026} presents a robust embedded solution implemented on NVIDIA's Jetson Orion Nano GPU using the YOLOv11 nano (YOLOv11n) model architecture for real-time drowsiness monitoring in drivers. The methodology focuses on high-speed object detection to monitor facial traits in the driver.The quantities monitored include  Eye Aspect Ratio (EAR) and Mouth Aspect Ratio (MAR) to identify states of drowsiness or distraction. The system achieves a low latency per inference of approximately 22ms with n overall accuracy of 93.1\%.
 \end{enumerate}
+
+\begin{figure}[h!]
+    \centering
+    \caption{Performance for different tiny ML architectures on the State Farm Distracted Driver Detection dataset \cite{essa2026}}
+    \includegraphics[width=.7\textwidth]{images/tabelaEssa.png}
+    \label{fig:essares}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Organisation}
@@ -82,4 +89,4 @@ The most relevant works consulted are summarized below:
 %Lembre-se de colocar rótulos nos capítulos e seções (com label{} ) e depois utilizar o ref{}
 %Por exemplo, o Capítulo \ref{cap:conceitos} apresenta conceitos....
 
-In chapter \ref{cap:conceitos}, we explore key concepts used by the driver monitoring systems discussed. Then, in chapter \ref{cap:especificacao}, we list functional and non-functional requirements for the project. In chapter \ref{cap:desenvolvimento} we provide an architecture for the project detailing what components could be used and how to integrate them into the system.
+In chapter \ref{cap:conceitos}, we explore key concepts used by the driver monitoring systems discussed. Then, in chapter \ref{cap:especificacao}, we list functional and non-functional requirements for the project. In chapter \ref{cap:desenvolvimento} we provide an architecture for the project detailing what components could be used and how to integrate them into the system. Finally, in chapter \ref{cap:consideracoes} we present our conclusions and final considerations ahead of the Laboratory course where we intend to implement this system.
